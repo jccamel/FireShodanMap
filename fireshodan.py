@@ -1,4 +1,5 @@
 import pyrebase
+import ConfigParser
 import paho.mqtt.client as mqtt
 import requests
 import shodan
@@ -167,7 +168,10 @@ def searching():
 
 if __name__ == "__main__":
 
-	SHODAN_API_KEY = "API_SHODAN_KEY"
+	config = ConfigParser.ConfigParser()
+    	config.read('CONFIG.cfg')
+	
+	SHODAN_API = config.get('SHODAN', 'SHODAN_API_KEY')
 	TERM_TO_SEARCH = "TERM_TO_SEARCH"
 
 	config = {
